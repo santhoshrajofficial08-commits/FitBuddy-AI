@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FitBuddy AI</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f7ff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 400px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .about {
+            background: #f2f7ff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        .about h2 {
+            margin-top: 0;
+            font-size: 20px;
+        }
+
+        .about p {
+            color: #555;
+            line-height: 1.5;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .note {
+            text-align: center;
+            color: #777;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>FitBuddy AI 💪</h1>
+
+        <p class="subtitle">
+            Your personal activity assistant
+        </p>
+
+        <div class="about">
+            <h2>About FitBuddy AI</h2>
+
+            <p>
+                FitBuddy AI helps you choose enjoyable activities
+                based on your fitness and activity goal.
+                Start gently, stay active, and take enough rest.
+            </p>
+        </div>
+
+        <form method="post" action="/generate">
+
+            <label>Name</label>
+
+            <input
+                type="text"
+                name="name"
+                placeholder="Enter your name"
+                required
+            >
+
+            <label>Age</label>
+
+            <input
+                type="number"
+                name="age"
+                placeholder="Enter your age"
+                required
+            >
+
+            <label>Gender</label>
+
+            <input
+                type="text"
+                name="gender"
+                placeholder="Enter your gender"
+                required
+            >
+
+            <label>Fitness / Activity Goal</label>
+
+            <select name="goal" required>
+
+                <option value="">
+                    Select your goal
+                </option>
+
+                <option value="fitness">
+                    Improve my fitness
+                </option>
+
+                <option value="strength">
+                    Build strength
+                </option>
+
+                <option value="running">
+                    Improve running
+                </option>
+
+                <option value="active">
+                    Become more active
+                </option>
+
+            </select>
+
+            <button type="submit">
+                Generate My Plan 🚀
+            </button>
+
+        </form>
+
+        <p class="note">
+            FitBuddy AI • Stay active and take care of yourself
+        </p>
+
+    </div>
+
+</body>
+</html>
