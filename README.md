@@ -1,3 +1,5 @@
+## Live Website
+https://fitbuddy-ai-chmb.onrender.com/
 # FitBuddy AI 💪
 
 FitBuddy AI is a beginner-friendly fitness and activity web application built with Python and FastAPI.
