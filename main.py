@@ -24,71 +24,69 @@ def generate_plan(
     gender: str = Form(...),
     goal: str = Form(...)
 ):
-
     name = name.strip()
     gender = gender.strip()
 
-    # Basic validation
     if not name:
-        error = "Please enter your name."
-        return templates.TemplateResponse(
-            request=request,
-            name="result.html",
-            context={
-                "request": request,
-                "name": "",
-                "goal": goal,
-                "plan": error
-            }
-        )
+        plan = "Please enter your name."
 
-    if age < 5 or age > 100:
-        error = "Please enter a valid age."
-        return templates.TemplateResponse(
-            request=request,
-            name="result.html",
-            context={
-                "request": request,
-                "name": name,
-                "goal": goal,
-                "plan": error
-            }
-        )
+    elif age < 5 or age > 100:
+        plan = "Please enter a valid age."
 
-    # Goal-based plan
-    if goal == "fitness":
-        plan = (
-            "Try enjoyable activities such as walking, cycling, "
-            "or a sport. Start gently, take breaks, "
-            "and build activity gradually."
-        )
+    elif goal == "fitness":
+        plan = """
+Day 1: Brisk Walking - 20 minutes
+Day 2: Cycling - 20 minutes
+Day 3: Light Jogging - 15 minutes
+Day 4: Rest and Stretching
+Day 5: Walking + Light Exercise - 25 minutes
+Day 6: Outdoor Sport - 30 minutes
+Day 7: Rest and Gentle Stretching
+"""
 
     elif goal == "strength":
-        plan = (
-            "Try simple bodyweight movements such as squats "
-            "and wall push-ups. Focus on comfortable movement, "
-            "good form, and enough rest."
-        )
+        plan = """
+Day 1: Squats + Wall Push-ups
+Day 2: Light Strength Exercises
+Day 3: Rest and Stretching
+Day 4: Squats + Wall Push-ups
+Day 5: Bodyweight Exercises
+Day 6: Light Strength Activity
+Day 7: Rest and Gentle Stretching
+"""
 
     elif goal == "running":
-        plan = (
-            "Start with comfortable walking and short periods "
-            "of easy jogging if it feels good. Increase gradually "
-            "and include rest days."
-        )
+        plan = """
+Day 1: Walking - 15 minutes
+Day 2: Walking + Easy Jogging - 15 minutes
+Day 3: Rest and Stretching
+Day 4: Walking + Easy Jogging - 20 minutes
+Day 5: Easy Walking - 20 minutes
+Day 6: Easy Jogging - 15 minutes
+Day 7: Rest and Gentle Stretching
+"""
 
     elif goal == "active":
-        plan = (
-            "Add more movement to your day through walking, "
-            "outdoor activities, cycling, or games you enjoy. "
-            "Take regular breaks and stay hydrated."
-        )
+        plan = """
+Day 1: Walking - 20 minutes
+Day 2: Cycling - 20 minutes
+Day 3: Outdoor Games - 30 minutes
+Day 4: Rest and Light Stretching
+Day 5: Walking - 25 minutes
+Day 6: Cycling or Sports - 30 minutes
+Day 7: Rest and Gentle Stretching
+"""
 
     else:
-        plan = (
-            "Choose an activity you enjoy, start gently, "
-            "and build up gradually while taking enough rest."
-        )
+        plan = """
+Day 1: Light Walking - 20 minutes
+Day 2: Simple Exercise - 15 minutes
+Day 3: Rest and Stretching
+Day 4: Walking - 20 minutes
+Day 5: Light Exercise - 20 minutes
+Day 6: Outdoor Activity - 30 minutes
+Day 7: Rest and Gentle Stretching
+"""
 
     return templates.TemplateResponse(
         request=request,

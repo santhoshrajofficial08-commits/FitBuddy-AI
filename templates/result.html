@@ -1,98 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>FitBuddy Result</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitBuddy AI - 7 Day Plan</title>
 
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #f2f7ff;
+            background: #f2f7f5;
             margin: 0;
-            padding: 0;
+            padding: 30px;
         }
 
         .container {
-            width: 400px;
-            margin: 50px auto;
+            max-width: 700px;
+            margin: auto;
             background: white;
             padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
 
         h1 {
             text-align: center;
         }
 
-        h2 {
-            margin-top: 25px;
-        }
-
         .details {
+            background: #e8f5f2;
             padding: 15px;
-            background: #f2f7ff;
             border-radius: 10px;
-            line-height: 1.8;
+            margin: 20px 0;
         }
 
-        .plan {
+        .day {
+            background: #f7f7f7;
             padding: 15px;
-            background: #f5f5f5;
+            margin: 12px 0;
             border-radius: 10px;
-            line-height: 1.6;
         }
 
-        .note {
-            margin-top: 20px;
-            padding: 12px;
-            background: #fff8e1;
-            border-radius: 8px;
-            font-size: 13px;
-            line-height: 1.5;
+        .day h3 {
+            margin-top: 0;
         }
 
-        a {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-            text-decoration: none;
+        .safety {
+            margin-top: 25px;
+            padding: 15px;
+            background: #fff4d6;
+            border-radius: 10px;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="container">
+<div class="container">
 
-        <h1>FitBuddy AI 💪</h1>
+    <h1>FitBuddy AI 💪</h1>
 
-        <h2>Hi {{ name }}! 👋</h2>
+    <h2>Hi {{ name }}! 👋</h2>
 
-        <div class="details">
-            <strong>Your Details</strong><br>
-            Name: {{ name }}<br>
-            Age: {{ age }}<br>
-            Gender: {{ gender }}<br>
-            Goal: {{ goal }}
-        </div>
-
-        <h2>Your Activity Plan</h2>
-
-        <div class="plan">
-            {{ plan }}
-        </div>
-
-        <div class="note">
-            <strong>Safety Note:</strong><br>
-            Start gently, listen to your body, take breaks,
-            and stop if you feel pain, dizziness, or unwell.
-            For health concerns, talk to a parent/guardian
-            or a qualified healthcare professional.
-        </div>
-
-        <a href="/">← Create Another Plan</a>
-
+    <div class="details">
+        <h3>Your Details</h3>
+        <p><strong>Name:</strong> {{ name }}</p>
+        <p><strong>Age:</strong> {{ age }}</p>
+        <p><strong>Gender:</strong> {{ gender }}</p>
+        <p><strong>Goal:</strong> {{ goal }}</p>
     </div>
+
+    <h2>7-Day Activity Plan 📅</h2>
+
+    {% for day in plan.split('\n') %}
+        {% if day.strip() %}
+            {% set parts = day.split(':', 1) %}
+            <div class="day">
+                {% if parts|length == 2 %}
+                    <h3>{{ parts[0] }}</h3>
+                    <p>{{ parts[1] }}</p>
+                {% else %}
+                    <p>{{ day }}</p>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endfor %}
+
+    <div class="safety">
+        <strong>Safety Note:</strong><br>
+        Start gently, take breaks, stay hydrated, and stop if you
+        feel pain, dizziness, or unwell. For health concerns,
+        talk to a qualified healthcare professional.
+    </div>
+
+</div>
 
 </body>
 </html>
