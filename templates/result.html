@@ -3,51 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitBuddy AI - 7 Day Plan</title>
+
+    <title>FitBuddy Result</title>
 
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #f2f7f5;
+            background: #f4f7fb;
             margin: 0;
             padding: 30px;
         }
 
         .container {
-            max-width: 700px;
+            max-width: 800px;
             margin: auto;
             background: white;
             padding: 30px;
             border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         h1 {
             text-align: center;
+            color: #222;
+        }
+
+        h2 {
+            margin-top: 30px;
+            color: #333;
         }
 
         .details {
-            background: #e8f5f2;
-            padding: 15px;
+            background: #eef7ff;
+            padding: 20px;
             border-radius: 10px;
-            margin: 20px 0;
+            line-height: 1.8;
+        }
+
+        .plan {
+            background: #f8f8f8;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
         }
 
         .day {
-            background: #f7f7f7;
-            padding: 15px;
-            margin: 12px 0;
+            border: 1px solid #ddd;
             border-radius: 10px;
+            padding: 18px;
+            margin: 12px 0;
+            background: #ffffff;
         }
 
         .day h3 {
-            margin-top: 0;
+            margin: 0 0 8px 0;
+            color: #222;
+        }
+
+        .day p {
+            margin: 5px 0;
         }
 
         .safety {
             margin-top: 25px;
-            padding: 15px;
-            background: #fff4d6;
+            padding: 18px;
+            background: #fff8e1;
             border-radius: 10px;
+            line-height: 1.6;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            color: #333;
         }
     </style>
 </head>
@@ -56,40 +87,54 @@
 
 <div class="container">
 
-    <h1>FitBuddy AI 💪</h1>
+    <h1>Hi {{ name }}! 👋</h1>
 
-    <h2>Hi {{ name }}! 👋</h2>
+    <h2>Your Details</h2>
 
     <div class="details">
-        <h3>Your Details</h3>
-        <p><strong>Name:</strong> {{ name }}</p>
-        <p><strong>Age:</strong> {{ age }}</p>
-        <p><strong>Gender:</strong> {{ gender }}</p>
-        <p><strong>Goal:</strong> {{ goal }}</p>
+        <strong>Name:</strong> {{ name }}<br>
+        <strong>Age:</strong> {{ age }}<br>
+        <strong>Gender:</strong> {{ gender }}<br>
+        <strong>Goal:</strong> {{ goal }}
     </div>
 
-    <h2>7-Day Activity Plan 📅</h2>
+    <h2>Your Activity Plan</h2>
 
-    {% for day in plan.split('\n') %}
-        {% if day.strip() %}
-            {% set parts = day.split(':', 1) %}
-            <div class="day">
-                {% if parts|length == 2 %}
-                    <h3>{{ parts[0] }}</h3>
-                    <p>{{ parts[1] }}</p>
-                {% else %}
-                    <p>{{ day }}</p>
-                {% endif %}
-            </div>
-        {% endif %}
+    <div class="plan">
+        {{ plan }}
+    </div>
+
+    <h2>📅 Your 7-Day Schedule</h2>
+
+    {% for day in schedule %}
+    <div class="day">
+
+        <h3>{{ day.day }}</h3>
+
+        <p>
+            <strong>Activity:</strong>
+            {{ day.activity }}
+        </p>
+
+        <p>
+            <strong>Duration:</strong>
+            {{ day.duration }}
+        </p>
+
+    </div>
     {% endfor %}
 
     <div class="safety">
         <strong>Safety Note:</strong><br>
+
         Start gently, take breaks, stay hydrated, and stop if you
         feel pain, dizziness, or unwell. For health concerns,
         talk to a qualified healthcare professional.
     </div>
+
+    <a class="back" href="/">
+        ← Create Another Plan
+    </a>
 
 </div>
 
